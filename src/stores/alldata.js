@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', () => {
+export const useDataStore = defineStore('alldata', () => {
   const count = ref(0)//state
 
   //getters
