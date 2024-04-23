@@ -1,0 +1,25 @@
+@import "bootstrap/scss/bootstrap";
+
+.img-cover {
+	object-fit: cover;
+	height:255px;
+}
+
+.img-hight{
+	object-fit: cover;
+	height:45vh;
+}
+
+.text-area {
+	overflow: hidden;
+// white-space: nowrap;
+	text-overflow: ellipsis;
+	height:100px;
+}
+
+@media (min-width: 768px){
+.img-hight {
+		object-fit: cover;
+		height: 85vh;
+	}
+}
