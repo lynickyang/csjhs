@@ -11,11 +11,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav  me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<RouterLink to="/">Go to Home</RouterLink>
-						<a class="nav-link active text-light" aria-current="page" href="#">首頁</a>
+						<RouterLink class="nav-link active text-light" aria-current="page" to="/about">關於</RouterLink>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-light" href="#">列表</a>
+						<RouterLink class="nav-link active text-light"  to="/">列表</RouterLink>
 					</li>
 
 					<li class="nav-item">
