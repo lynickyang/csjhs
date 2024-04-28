@@ -1,4 +1,9 @@
+<script setup >
+	import modalForm from './Modal.vue';
+</script>
+
 <template>
+	<modalForm 	/>
 	<nav class="navbar navbar-expand-lg bg-success ">
 		<div class="container-fluid ">
 			<a class="navbar-brand text-light" href="#">小田園</a>
@@ -11,14 +16,14 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav  me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<RouterLink class="nav-link active text-light" aria-current="page" to="/about">關於</RouterLink>
+						<RouterLink class="nav-link  text-light" aria-current="page" to="/about">關於</RouterLink>
 					</li>
 					<li class="nav-item">
 						<RouterLink class="nav-link active text-light"  to="/">列表</RouterLink>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link disabled" aria-disabled="true">新增</a>
+						<button class="nav-link text-light"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">新增</button>						
 					</li>
 				</ul>
 				<form class="d-flex" role="search">

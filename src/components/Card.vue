@@ -1,23 +1,25 @@
 <script setup>
-// const props = defineProps(["item"]);
-import { useDataStore } from '@/stores/useDataStore';
+import { useDataStore } from "@/stores/useDataStore";
+const sotreDatas= useDataStore();
 
-/*
-	store
-*/
+defineProps(["item"]);
 
-const sotreDatas= useDataStore()
-console.log(sotreDatas.ItemData)
 
 </script>
-<template>
-	<!-- <p>item:{{ item.name }}</p>
-	<p>descrip:{{ item.description }}</p> -->
-	<p>{{ sotreDatas.ItemData}}</p>
-	<button type="button" @click="sotreDatas.SwitchOpen">button</button>
-	{{ sotreDatas.openSwitch }}
-	<RouterLink></RouterLink>
-       
- <!-- :to="{ name: 'item', params: { id: item.id } }">{{ item.id }}  -->
 
+
+
+<template>
+
+  <div class="card ">
+    <img :src="item.image" class="card-img-top img-cover" />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text text-area">{{ item.description }}</p>
+      <button type="button" href="#" class="btn btn-danger " @click="sotreDatas.removieData(item.id)">刪除</button>
+      <button type="button" href="#" class="btn btn-primary">編輯</button>
+    </div>
+  </div>
+
+  <!-- :to="{ name: 'item', params: { id: item.id } }">{{ item.id }}  -->
 </template>

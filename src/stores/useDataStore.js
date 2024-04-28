@@ -29,6 +29,38 @@ export const useDataStore = defineStore('alldata', {
   actions:{
     SwitchOpen(){
       this.openSwitch=!this.openSwitch;
+    },
+    updateMovie(data) {
+      movies.value = movies.value.map((m) => {
+        if (m.id === data.id) {
+          data.rating = m.rating;
+          return data;
+        }
+        return m;
+      });
+      // hideForm();
+    },
+  
+  pushItemJosn(pushData){
+    console.log("新增")
+    console.log("pushDatra",pushData)
+    this.ItemData.push(pushData);
+  },
+
+  removeData(index){
+    this.ItemData.value = this.ItemData.value.filter((movie) => movie.id !== id);
+  },
+  editMovie(id) {
+    currentMovie.value = movies.value.find((movie) => movie.id === id);
+    showForm();
+  },
+  saveMovie(data) {
+    const isNew = !!movies.value.find((movie) => movie.id === data.id);
+    if (!isNew) {
+      addMovie(data);
+    } else {
+      updateMovie(data);
     }
-  }
+  },
+}
 })
