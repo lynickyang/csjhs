@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 
+
 export const useDataStore = defineStore('alldata', {
   state:()=>{
     return{
@@ -23,7 +24,7 @@ export const useDataStore = defineStore('alldata', {
               image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Curcuma_longa_roots.jpg"
             }
           ],
-      openSwitch:false
+        currentData:[],
     }
   },
   actions:{
@@ -41,17 +42,17 @@ export const useDataStore = defineStore('alldata', {
       // hideForm();
     },
   
-  pushItemJosn(pushData){
-    console.log("新增")
-    console.log("pushDatra",pushData)
+  addData(pushData){
     this.ItemData.push(pushData);
   },
 
-  removeData(index){
-    this.ItemData.value = this.ItemData.value.filter((movie) => movie.id !== id);
+  removieData(id){
+    this.ItemData= this.ItemData.filter((item) => item.id !== id);
   },
-  editMovie(id) {
-    currentMovie.value = movies.value.find((movie) => movie.id === id);
+
+  editData(id) {
+    console.log("觸發edit store")
+    this.currentData= this.ItemData.find((item) => item.id === id);
     showForm();
   },
   saveMovie(data) {

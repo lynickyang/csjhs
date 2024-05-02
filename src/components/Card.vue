@@ -17,7 +17,7 @@ defineProps(["item"]);
       <h5 class="card-title">{{ item.name }}</h5>
       <p class="card-text text-area">{{ item.description }}</p>
       <button type="button" href="#" class="btn btn-danger " @click="sotreDatas.removieData(item.id)">刪除</button>
-      <button type="button" href="#" class="btn btn-primary">編輯</button>
+      <button type="button" href="#" class="btn btn-primary" @click="sotreDatas.editData(item.id)">編輯</button>
     </div>
   </div>
 

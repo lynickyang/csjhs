@@ -12,9 +12,10 @@ const sotreDatas= useDataStore()
 <template>
 
   <Slide />
+ 	
   <div class="container-md">
     <div class="row" pt-5>
-      <div class="col"  v-for="item in sotreDatas.ItemData">
+      <div class="col-md-4"  v-for="item in sotreDatas.ItemData">
         <Card 
         class="mt-3"
         :key="item.id"

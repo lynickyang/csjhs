@@ -1,9 +1,9 @@
 <script setup >
-	import modalForm from './Modal.vue';
+
 </script>
 
 <template>
-	<modalForm 	/>
+	<!-- <ChildComponent /> -->
 	<nav class="navbar navbar-expand-lg bg-success ">
 		<div class="container-fluid ">
 			<a class="navbar-brand text-light" href="#">小田園</a>
@@ -23,7 +23,7 @@
 					</li>
 
 					<li class="nav-item">
-						<button class="nav-link text-light"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">新增</button>						
+						<RouterLink class="nav-link active text-light"  to="/create">新增</RouterLink>				
 					</li>
 				</ul>
 				<form class="d-flex" role="search">
