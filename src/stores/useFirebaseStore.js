@@ -35,9 +35,10 @@ export const useFirebaseStore = defineStore('firebaseStore', {
       date = currentDate.toString()
 
     await addDoc(collection(db,'products'), {
-      date,
+      id:date,
       name:item.name,
       image:item.image,
+      description:item.description,
     })
     },
 

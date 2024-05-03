@@ -1,29 +1,30 @@
 <template>
+  <div class="container-lg">
     <div class="text-end mt-3">
       <button class="btn btn-primary" type="button"
       @click="openModal(true)">
         增加一個產品
       </button>
-    </div>
-    <table class="table mt-4">
+    </div >
+    <table class="table mt-4 container-lg">
       <thead>
         <tr>
-          <th width="80">id</th>
-          <th width="150">姓稱</th>
-          <th width="450">描述</th>
-          <th width="200">網址</th>
+          <th width="80" class="white-space: pre-wrap">id</th>
+          <th width="150" class="white-space: pre-wrap">姓稱</th>
+          <th width="450" class="white-space: pre-wrap">描述</th>
+          <th width="200" class="white-space: pre-wrap">網址</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in useFBstore.products" 
         :key="item.id"
         >
-          <td>{{ item.id}}</td>
-          <td>{{ item.name }}</td>
-          <td class="text-right">
+          <td class="white-space: pre-wrap">{{ item.id}}</td>
+          <td class="white-space: pre-wrap">{{ item.name }}</td>
+          <td class="text-right white-space: pre-wrap">
             {{ item.description}}
           </td>
-          <td class="text-right">
+          <td class="text-right white-space: pre-wrap">
             {{ item.image }}
           </td>
           <td>
@@ -39,10 +40,12 @@
 
     <ProductModal ref="productModal"
       :product="tempProduct"
+      :isNew="isNew"
       @update-product="updateProduct">
     </ProductModal>
+   </div>
   </template>
-  
+ 
   <script setup>
   import {ref} from "vue"
   import ProductModal from '../components/Modal.vue'

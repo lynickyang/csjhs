@@ -69,7 +69,7 @@
           Close
         </button>
 
-        <button type="submit" @click="$emit('update-product', tempProduct)" class="btn btn-primary">新增</button>
+        <button type="submit" @click="$emit('update-product', tempProduct)" class="btn btn-primary">{{isNew ? '新增' :'編輯'}}</button>
       </div>
     </div>
   </div>
@@ -86,6 +86,7 @@ export default {
       type: Object,
       default() { return {}; },
     },
+    isNew:''
   },
   watch: {
     product() {
