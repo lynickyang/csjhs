@@ -12,7 +12,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">新增</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{isNew ? '新增' :'更新'}}</h1>
         <button
         @click="hideModal"
           type="button"
@@ -66,10 +66,10 @@
           class="btn btn-secondary"
           data-bs-dismiss="modal"
         >
-          Close
+          取消
         </button>
 
-        <button type="submit" @click="$emit('update-product', tempProduct)" class="btn btn-primary">{{isNew ? '新增' :'編輯'}}</button>
+        <button type="submit" @click="$emit('update-product', tempProduct)" class="btn btn-primary">{{isNew ? '新增' :'更新'}}</button>
       </div>
     </div>
   </div>

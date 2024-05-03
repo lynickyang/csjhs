@@ -1,9 +1,9 @@
 <script setup>
   import Slide from './Slideshow.vue'
   import Card from './Card.vue'
-  import { useDataStore } from '@/stores/useDataStore';
+  import { useFirebaseStore } from '@/stores/useFirebaseStore';
 
-const sotreDatas= useDataStore()
+const useFBstore= useFirebaseStore()
 
 </script>
 
@@ -15,7 +15,7 @@ const sotreDatas= useDataStore()
  	
   <div class="container-md">
     <div class="row" pt-5>
-      <div class="col-md-4"  v-for="item in sotreDatas.ItemData">
+      <div class="col-md-4"  v-for="item in useFBstore.products">
         <Card 
         class="mt-3"
         :key="item.id"
