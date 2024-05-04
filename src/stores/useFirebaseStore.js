@@ -8,11 +8,13 @@ import { collection, onSnapshot,doc,
 export const useFirebaseStore = defineStore('firebaseStore', {
   state:()=>{
     return{
-      products:[]
+      products:[],
+      dataReady:false
     }
   },
   actions:{
     async getProducts(){
+      console.log("觸發getProducts<ready:" ,this.dataReady)
       onSnapshot(collection(db,'products'), (querySnapshot) => {
         let datas=[];
         querySnapshot.forEach((doc) => {
@@ -25,6 +27,8 @@ export const useFirebaseStore = defineStore('firebaseStore', {
           datas.push(data)
         })
         this.products=datas
+        this.dataReady=true
+        console.log("擷取完成ready,",this.dataReady)
       })
     },
 

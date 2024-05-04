@@ -13,7 +13,7 @@ const router = createRouter({
       path: "/:id",
       name: "item",
       component: () => import("../views/ItemDetail.vue"),
-      props: (route) => ({ id: Number(route.params.id) }),
+      props: (route) => ({ id: route.params.id }),
     },
     {
       path: '/about',

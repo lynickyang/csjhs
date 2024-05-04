@@ -1,16 +1,27 @@
 <script setup>
 import { ref,computed } from "vue";
-import { items } from "@/movies.json";
+import { useFirebaseStore } from "../stores/useFirebaseStore"
+const useFBstore = useFirebaseStore();
 
-const props = defineProps({
-  id: Number,
-});
 
-const itemData = ref(items);
+
+
+const props = defineProps(['id']);
+
+console.log("props.id:",props.id)
+
+const itemData = ref(useFBstore.products);
+console.log('useFBstore.products:',useFBstore.products)
+console.log('itemData:',itemData.value)
+
 //從網址抓id,找出資料,指定給movie
 const item = computed(() => itemData.value.find((m) => m.id === props.id));
+
+console.log("item:",item)
 </script>
 <template>
+
+
   <div
     class="container flex items-center max-w-6xl gap-4 p-10 m-auto dark:text-white"
   >
@@ -23,4 +34,5 @@ const item = computed(() => itemData.value.find((m) => m.id === props.id));
       <p class="text-xl">{{ item.description }}</p>
     </div>
   </div>
+
 </template>
