@@ -2,8 +2,8 @@ import { defineStore } from 'pinia'
 import {db} from '../js/firebase'
 
 import { collection, onSnapshot,doc,
-  deleteDoc,updateDoc,addDoc,
-  query, orderBy } from "firebase/firestore";
+  deleteDoc,updateDoc,addDoc,setDoc ,
+  } from "firebase/firestore";
 
 export const useFirebaseStore = defineStore('firebaseStore', {
   state:()=>{
@@ -35,11 +35,10 @@ export const useFirebaseStore = defineStore('firebaseStore', {
     async addData(item){
       console.log("觸發新增")
       console.log("傳入資料",item)
-      let currentDate = new Date().getTime(),
-      date = currentDate.toString()
+      // let currentDate = new Date().getTime(),
+      // date = currentDate.toString()
 
-    await addDoc(collection(db,'products'), {
-      id:date,
+    await setDoc(doc(db,'products',item.name), {
       name:item.name,
       image:item.image,
       description:item.description,
