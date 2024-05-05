@@ -21,6 +21,6 @@ onMounted(()=>{
   <RouterView />
 </template>
 
-<!-- <style>
+<style>
 @import 'bulma/css/bulma.min.css';
-</style> -->
+</style>

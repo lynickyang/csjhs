@@ -56,7 +56,7 @@ const item = computed(() => itemData.value.find((m) => m.id === props.id));
   </div>
 <!-- 留言板 -->
 
-<div class="notes">
+<div class="notes theme-light">
 
 <AddEditNote
   v-model="newNote"
@@ -69,7 +69,7 @@ const item = computed(() => itemData.value.find((m) => m.id === props.id));
       :disabled="!newNote"
       class="button is-link has-background-success"
     >
-      Add New Note
+      新增紀錄
     </button>
   </template>
 </AddEditNote>

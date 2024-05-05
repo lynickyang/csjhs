@@ -16,13 +16,11 @@ const router = createRouter({
       name: "item",
       component: () => import("../views/ItemDetail.vue"),
       props: (route) => ({ id: route.params.id }),
-      children:[
-        {
-          path: ':id',
-          name: 'edit-note',
-          component: ViewEditNote
-        },
-      ]
+    },
+    {
+      path: '/editNote/:id',
+      name: 'edit-note',
+      component:ViewEditNote
     },
     {
       path: '/about',

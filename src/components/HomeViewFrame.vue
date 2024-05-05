@@ -1,7 +1,6 @@
 <script setup>
 import Slide from "./Slideshow.vue";
 import { useFirebaseStore } from "@/stores/useFirebaseStore";
-import { ref } from "vue";
 const useFBstore = useFirebaseStore();
 import { useStoreNotes } from "@/stores/storeNotes";
 const useStore= useStoreNotes()
@@ -15,15 +14,22 @@ function setId(id){
 <template>
   <Slide />
   <div class="container-md">
+
     <div class="row" pt-5>
-      <h1>card</h1>
       <div class="col-md-4" v-for="item in useFBstore.products" :key="item.id">
-        <div class="card">
-          <img :src="item.image" class="card-img-top img-cover" />
+        <div class="card theme-light">
+            <RouterLink
+                class="overflow-hidden"
+                :to="{ name: 'item', params: { id: item.id } }"
+                >
+                <img :src="item.image" class="card-img-top img-cover " />
+              </RouterLink>
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text text-area">{{ item.description }}</p>
-            <button @click="setId(item.id)">
+          </div>
+          <div class="card-foot">
+            <button class="btn" @click="setId(item.id)">
               <RouterLink
                 class="btn btn-primary"
                 :to="{ name: 'item', params: { id: item.id } }"

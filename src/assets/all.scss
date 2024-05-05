@@ -3,7 +3,15 @@
 .img-cover {
 	object-fit: cover;
 	height:255px;
+	transform:scale(1,1);
+	transition: all 0.5s ease-out;
 }
+
+.hidden{
+	overflow:hidden;
+}
+
+.img-cover:hover{transform:scale(1.2,1.2);}
 
 .img-hight{
 	object-fit: cover;

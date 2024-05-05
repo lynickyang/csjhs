@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <footer class="card-footer">
+      <footer class="card-footer ">
         <RouterLink
           :to="`/editNote/${ note.id }`"
           class="card-footer-item"
@@ -21,13 +21,12 @@
         </RouterLink>
         <a
           @click.prevent="modals.deleteNote = true"
-          class="card-footer-item"
+          class="card-footer-item has-text-danger"
           href="#"
         >
           刪除
         </a>
       </footer>
-      
       <ModalDeleteNote
         v-if="modals.deleteNote"
         v-model="modals.deleteNote"
@@ -42,8 +41,8 @@
   */
   
     import { computed, reactive } from 'vue'
-    import ModalDeleteNote from '@/components/notes/ModalDeleteNote.vue'
-    import { useStoreNotes } from '@/stores/storeNotes'
+    import ModalDeleteNote from '../notes/ModalDeleteNote.vue'
+    import { useStoreNotes } from '../../stores/storeNotes.js'
   
   /*
     props
@@ -53,10 +52,6 @@
       note: {
         type: Object,
         required: true
-      },
-      id:{
-        tyep:Text,
-        required:true
       }
     })
   

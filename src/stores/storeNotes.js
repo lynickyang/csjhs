@@ -57,6 +57,7 @@ export const useStoreNotes = defineStore('storeNotes', {
 
     },
     async deleteNote(idToDelete) {
+      console.log("觸發delete",idToDelete)
       await deleteDoc(doc(collection(db,'products',this.setId,'message'), idToDelete));
     },
 

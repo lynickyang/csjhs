@@ -1,17 +1,16 @@
 <template>
     <div
-      class="card p-4 mb-5"
-      :class="`has-background-${ bgColor }-dark`"
+      class="card p-4 mb-5 has-background-primary-25"
     >
       <label
         v-if="label"
-        class="label has-text-white"
+        class="label has-text-white "
       >
         {{ label }}
       </label>
   
       <div class="field">
-        <div class="control">
+        <div class="control ">
           <textarea
             v-model="model"
             class="textarea"

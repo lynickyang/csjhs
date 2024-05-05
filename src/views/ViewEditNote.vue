@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-note">
+  <div class="edit-note ">
     <h1>{{ noteContent }}</h1>
     <AddEditNote
       v-model="noteContent"
@@ -13,14 +13,14 @@
           @click="$router.back()"
           class="button is-link is-light mr-2"
         >
-          Cancel
+          取消
         </button>
         <button
           @click="handleSaveClicked"
           class="button is-link has-background-link"
           :disabled="!noteContent"
         >
-          Save Note
+          保存
         </button>
       </template>
     </AddEditNote>
@@ -67,7 +67,7 @@
     console.log('router.params:',route.params.id)
     console.log('noteContent.value:',noteContent.value)
     storeNotes.updateNote(route.params.id, noteContent.value)
-    router.push('/')
+    router.back()
   }
 
 </script>

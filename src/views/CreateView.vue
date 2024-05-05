@@ -1,12 +1,67 @@
 <template>
   <div class="container-lg">
-    <div class="text-end mt-3">
+
+    <div class="text-end mt-3 mb-4">
       <button class="btn btn-primary" type="button"
       @click="openModal(true)">
-        增加一個產品
+        新增項目
       </button>
     </div >
-    <table class="table mt-4 container-lg">
+<!-- 
+    <div class="row" >
+      <div class="col-md-1 border fs-3">
+        編號
+      </div>
+      <div class="col-md-9 border fs-3">
+        項目名稱
+      </div>
+      <div class="col-md-2 border fs-3">
+        功能
+      </div>
+  </div>
+
+    <div class="row" v-for="(item,index) in useFBstore.products"
+    :key="item.name">
+      <div class="col-md-1 pt-1 pb-1 border text-center fs-5 align-middle">
+        {{ index+1 }}
+      </div>
+      <div class="col-md-9 pt-1 pb-1 border fs-5 align-middle">
+        {{ item.name }}
+      </div>
+      <div class="col-md-2 pt-1 pb-1 border">  
+          <button class="btn btn-outline-primary m-1"
+          @click="openModal(false, item)">編輯</button>
+          <button class="btn btn-outline-danger" @click="deletDate(item.id)">刪除</button>
+      </div>
+  </div> -->
+
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th width="10%" scope="col-md-1">#</th>
+      <th width="20%" scope="col-md-4">植物中文</th>
+      <th width="50%" scope="col-md-4">植物描述</th>
+      <th width="20%" scope="col-md-3">功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table align-middle" v-for="(item,index) in useFBstore.products"
+    :key="index+1">
+      <th scope="row">{{index+1}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <button class="btn btn-outline-primary m-1"
+          @click="openModal(false, item)">編輯</button>
+          <button class="btn btn-outline-danger" @click="deletDate(item.id)">刪除</button>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+    <!-- <table class="table mt-4 container-lg">
       <thead>
         <tr>
           <th width="80" class="white-space: pre-wrap">id</th>
@@ -36,7 +91,7 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
     <ProductModal ref="productModal"
       :product="tempProduct"
@@ -44,6 +99,7 @@
       @update-product="updateProduct">
     </ProductModal>
    </div>
+
   </template>
  
   <script setup>
