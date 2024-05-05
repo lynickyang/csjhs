@@ -1,27 +1,47 @@
 <script setup>
-import { ref,computed } from "vue";
+import { ref,computed, onMounted } from "vue";
 import { useFirebaseStore } from "../stores/useFirebaseStore"
 const useFBstore = useFirebaseStore();
 
-
-
-
 const props = defineProps(['id']);
+// console.log("props.id:",props.id)
+/*
+  留言板
+*/
+import Note from '../components/notes/Note.vue'
+import AddEditNote from '../components/notes/AddEditNote.vue'
+import { useStoreNotes } from '../stores/storeNotes'
+import { useWatchCharacters } from '../use/useWatchCharacters'
+const storeNotes = useStoreNotes()
 
-console.log("props.id:",props.id)
+
+
+// onMounted(()=>{
+//   console.log("onMOunted id",props.id)  
+//   // storeNotes.setdbId(props.id)
+// })
+
+const newNote = ref('')
+  const addEditNoteRef = ref(null)
+
+  const addNote = () => {
+    storeNotes.addNote(newNote.value)
+    newNote.value = ''
+    addEditNoteRef.value.focusTextarea()
+  }
+  useWatchCharacters(newNote)
 
 const itemData = ref(useFBstore.products);
-console.log('useFBstore.products:',useFBstore.products)
-console.log('itemData:',itemData.value)
+// console.log('useFBstore.products:',useFBstore.products)
+// console.log('itemData:',itemData.value)
 
 //從網址抓id,找出資料,指定給movie
 const item = computed(() => itemData.value.find((m) => m.id === props.id));
 
-console.log("item:",item)
+
+// console.log("item:",item)
 </script>
 <template>
-
-
   <div
     class="container flex items-center max-w-6xl gap-4 p-10 m-auto dark:text-white"
   >
@@ -34,5 +54,32 @@ console.log("item:",item)
       <p class="text-xl">{{ item.description }}</p>
     </div>
   </div>
+<!-- 留言板 -->
+
+<div class="notes">
+
+<AddEditNote
+  v-model="newNote"
+  placeholder="留言區"
+  ref="addEditNoteRef"
+>
+  <template #buttons>
+    <button
+      @click="addNote"
+      :disabled="!newNote"
+      class="button is-link has-background-success"
+    >
+      Add New Note
+    </button>
+  </template>
+</AddEditNote>
+
+<Note
+  v-for="note in storeNotes.notes"
+  :key="props.id"
+  :note="note"
+/>
+</div>
+
 
 </template>

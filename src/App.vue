@@ -7,6 +7,9 @@ import { onMounted } from 'vue';
 
 const useFBstore = useFirebaseStore()
 
+import { useStoreNotes } from './stores/storeNotes';
+const storeNotes= useStoreNotes()
+
 onMounted(()=>{
   useFBstore.getProducts()
 })
@@ -17,3 +20,7 @@ onMounted(()=>{
   <Navbar />
   <RouterView />
 </template>
+
+<!-- <style>
+@import 'bulma/css/bulma.min.css';
+</style> -->

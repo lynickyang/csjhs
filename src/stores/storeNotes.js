@@ -5,19 +5,34 @@ import { collection, onSnapshot,doc,
    deleteDoc,updateDoc,addDoc,
    query, orderBy} from 'firebase/firestore';
    
-const notesCollectionRef = collection(db,'notes')
-const notesCollectionQueryRef = query(notesCollectionRef, orderBy('date', 'desc'));
+
+// notesCollectionRef = collection(db,'products',this.setId,'message')
+// notesCollectionQueryRef = query(notesCollectionRef , orderBy('date', 'desc'))
+
+
 
 export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
     return { 
       notes: [
-      ]
+      ],
+      setId:'香水芭樂',
     }
   },
   actions: {
+    
+    setdbId(id){
+      // console.log("觸發setdbIdstore")
+      this.setId= id
+      // console.log("after set this.setId:",this.setId)
+      this.getNotes()
+      // setTimeout(() => {
+      // }, 2000);
+
+    },
+
     async getNotes(){
-      onSnapshot(notesCollectionQueryRef, (querySnapshot) => {
+      onSnapshot(query(collection(db,'products',this.setId,'message'), orderBy('date', 'desc')), (querySnapshot) => {
         let notes = [];
         querySnapshot.forEach((doc) => {
           let note={
@@ -35,25 +50,27 @@ export const useStoreNotes = defineStore('storeNotes', {
       let currentDate = new Date().getTime(),
           date = currentDate.toString()
 
-      await addDoc(notesCollectionRef, {
+      await addDoc(collection(db,'products',this.setId,'message'), {
         content:newNoteContent,
         date
       });
 
     },
     async deleteNote(idToDelete) {
-      await deleteDoc(doc(notesCollectionRef, idToDelete));
+      await deleteDoc(doc(collection(db,'products',this.setId,'message'), idToDelete));
     },
 
     async updateNote(id, content) {
-      await updateDoc(doc(notesCollectionRef,id), {
+      await updateDoc(doc(collection(db,'products',this.setId,'message'),id), {
         content
       });
     }
   },
   getters: {
     getNoteContent: (state) => {
+      console.log("觸發getNoteContent")
       return (id) => {
+        console.log("id:",id)
         return state.notes.filter(note => note.id === id )[0].content
       }
     },
