@@ -13,22 +13,21 @@ function setId(id){
 <!-- 在這裡加入資訊，帶入到元件裡面 -->
 <template>
   <Slide />
-  <div class="container-md">
-
+  <div class="container-md mt-5 mb-5">
     <div class="row" pt-5>
       <div class="col-md-4" v-for="item in useFBstore.products" :key="item.id">
-        <div class="card theme-light">
+        <div class="card mb-4">
             <RouterLink
                 class="overflow-hidden"
                 :to="{ name: 'item', params: { id: item.id } }"
                 >
-                <img :src="item.image" class="card-img-top img-cover " />
-              </RouterLink>
+                <img :src="item.image" class="card-img-top img-cover" />
+            </RouterLink>
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text text-area">{{ item.description }}</p>
+            <p class="card-text text-area " >{{ item.description }}</p>
           </div>
-          <div class="card-foot">
+          <div class="card-footer">
             <button class="btn" @click="setId(item.id)">
               <RouterLink
                 class="btn btn-primary"

@@ -1,5 +1,5 @@
 <template>
-    <div
+    <!-- <div
       class="card mb-4"
     >
       <div class="card-content">
@@ -20,19 +20,55 @@
           編輯
         </RouterLink>
         <a
-          @click.prevent="modals.deleteNote = true"
+          @click.prevent="storeNotes.deleteNote(note.id)"
           class="card-footer-item has-text-danger"
           href="#"
         >
           刪除
         </a>
       </footer>
+
       <ModalDeleteNote
+        ref="delModal"
         v-if="modals.deleteNote"
         v-model="modals.deleteNote"
         :noteId="note.id"
       />
+
+    </div> -->
+
+
+    <div class="card mb-4">
+  <div class="card-body">
+    <p class="card-text">{{ note.content }}</p> 
+    <div class="row">
+        <small class="col text-secondary">{{ note.date }}</small>
+        <small class="col text-end text-secondary">{{ characterLength }}</small>
     </div>
+  </div>
+  <div class="card-footer ">
+    <RouterLink
+      :to="`/editNote/${ note.id }`"
+      class="me-3"
+      href="#"
+    >
+      編輯
+    </RouterLink>
+    <a
+      @click.prevent="storeNotes.deleteNote(note.id)"
+      class="text-danger"
+      href="#"
+    >
+      刪除
+    </a>
+  </div>
+</div>
+<ModalDeleteNote
+        ref="delModal"
+        v-if="modals.deleteNote"
+        v-model="modals.deleteNote"
+        :noteId="note.id"
+      />
   </template>
   
   <script setup>
@@ -43,6 +79,9 @@
     import { computed, reactive } from 'vue'
     import ModalDeleteNote from '../notes/ModalDeleteNote.vue'
     import { useStoreNotes } from '../../stores/storeNotes.js'
+    import {ref} from 'vue'
+
+    const delModal=ref(null)
   
   /*
     props

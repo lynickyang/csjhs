@@ -1,33 +1,27 @@
 <template>
-    <div
-      class="card p-4 mb-5 has-background-primary-25"
-    >
-      <label
+<div class="card mb-5">
+  <label
         v-if="label"
-        class="label has-text-white "
+        class="text-black"
       >
         {{ label }}
-      </label>
-  
-      <div class="field">
-        <div class="control ">
-          <textarea
-            v-model="model"
-            class="textarea"
-            :placeholder="placeholder"
-            ref="textareaRef"
-            maxlength="100"
-            v-autofocus></textarea>
-
-        </div>
-      </div>
-  
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <slot name="buttons" />
-        </div>
-      </div>
+  </label>
+  <div class="card-body text-bg-success">
+    <textarea
+      v-model="model"
+      class="form-control "
+      :placeholder="placeholder"
+      ref="textareaRef"
+      maxlength="100"
+      style="height: 140px"
+      v-autofocus>   
+    </textarea>
+    <div class="card-footer p-0 pt-3">
+      <slot name="buttons" />
     </div>
+  </div>
+</div>
+ 
   </template>
   
   <script setup>

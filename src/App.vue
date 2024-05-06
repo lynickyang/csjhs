@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
 import {useFirebaseStore} from './stores/useFirebaseStore'
 import { onMounted } from 'vue';
@@ -19,8 +20,9 @@ onMounted(()=>{
 <template>
   <Navbar />
   <RouterView />
+  <Footer />
 </template>
 
-<style>
+<!-- <style>
 @import 'bulma/css/bulma.min.css';
-</style>
+</style> -->

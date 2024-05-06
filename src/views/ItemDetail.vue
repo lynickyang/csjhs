@@ -42,10 +42,8 @@ const item = computed(() => itemData.value.find((m) => m.id === props.id));
 // console.log("item:",item)
 </script>
 <template>
-  <div
-    class="container flex items-center max-w-6xl gap-4 p-10 m-auto dark:text-white"
-  >
-      <img :src="item.image" :alt="item.name"  />
+  <div class="container-md">
+      <img class="img-fluid" :src="item.image" :alt="item.name"  />
 <!-- 顯示資料movie -->
     <div>
       <h1 class="mb-4 text-5xl">{{ item.name }}</h1>
@@ -56,23 +54,22 @@ const item = computed(() => itemData.value.find((m) => m.id === props.id));
   </div>
 <!-- 留言板 -->
 
-<div class="notes theme-light">
-
-<AddEditNote
-  v-model="newNote"
-  placeholder="留言區"
-  ref="addEditNoteRef"
->
-  <template #buttons>
-    <button
-      @click="addNote"
-      :disabled="!newNote"
-      class="button is-link has-background-success"
+<div class="container-md">
+    <AddEditNote
+      v-model="newNote"
+      placeholder="留言區"
+      ref="addEditNoteRef"
     >
-      新增紀錄
-    </button>
-  </template>
-</AddEditNote>
+      <template #buttons>
+        <button
+          @click="addNote"
+          :disabled="!newNote"
+          class="btn btn-light text-success"
+        >
+          新增紀錄
+        </button>
+      </template>
+    </AddEditNote>
 
 <Note
   v-for="note in storeNotes.notes"

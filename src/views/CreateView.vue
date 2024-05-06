@@ -1,7 +1,7 @@
 <template>
   <div class="container-lg">
 
-    <div class="text-end mt-3 mb-4">
+    <div class="text-end mt-5 mb-4">
       <button class="btn btn-primary" type="button"
       @click="openModal(true)">
         新增項目
